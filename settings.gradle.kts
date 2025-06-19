@@ -40,3 +40,4 @@ include(":core:notifications")
 include(":core:ui")
 
 include(":feature:home")
+include(":feature:time")

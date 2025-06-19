@@ -1,5 +1,3 @@
-
-
 package com.huxh.timer.navigation
 
 import androidx.compose.runtime.Composable
@@ -7,6 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.huxh.apps.feature.home.HomeRoute
 import com.huxh.apps.feature.home.homeScreen
+import com.huxh.apps.feature.time.create.createTimeScreen
+import com.huxh.apps.feature.time.create.navigateToCreateTime
 import com.huxh.timer.ui.AppState
 
 /**
@@ -28,6 +28,11 @@ fun AppNavHost(
         startDestination = HomeRoute,
         modifier = modifier,
     ) {
-        homeScreen()
+        homeScreen(
+            navigateToCreateTime = navController::navigateToCreateTime
+        )
+        createTimeScreen(
+            navigateUp = navController::navigateUp
+        )
     }
 }

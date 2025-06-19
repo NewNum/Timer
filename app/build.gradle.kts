@@ -60,6 +60,7 @@ dependencies {
     implementation(projects.core.model)
 
     implementation(projects.feature.home)
+    implementation(projects.feature.time)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
