@@ -1,14 +1,11 @@
 package com.huxh.apps.core.database.dao
 
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Upsert
 import com.huxh.apps.core.database.model.TopicEntity
 import kotlinx.coroutines.flow.Flow
-@Dao
 
+@Dao
 interface TopicDao {
 
     @Query(

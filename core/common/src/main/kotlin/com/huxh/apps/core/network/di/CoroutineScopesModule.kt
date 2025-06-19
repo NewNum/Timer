@@ -3,7 +3,7 @@
 package com.huxh.apps.core.network.di
 
 import com.huxh.apps.core.network.Dispatcher
-import com.huxh.apps.core.network.NiaDispatchers.Default
+import com.huxh.apps.core.network.AppDispatchers.Default
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -14,7 +14,7 @@ import android.os.Build.VERSION_CODES
 import androidx.core.content.getSystemService
 import androidx.tracing.trace
 import com.huxh.apps.core.network.Dispatcher
-import com.huxh.apps.core.network.NiaDispatchers.IO
+import com.huxh.apps.core.network.AppDispatchers.IO
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.awaitClose

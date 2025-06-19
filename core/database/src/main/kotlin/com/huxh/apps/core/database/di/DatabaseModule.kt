@@ -4,7 +4,7 @@ package com.huxh.apps.core.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.huxh.apps.core.database.NiaDatabase
+import com.huxh.apps.core.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,11 +17,11 @@ import javax.inject.Singleton
 internal object DatabaseModule {
     @Provides
     @Singleton
-    fun providesNiaDatabase(
+    fun providesAppDatabase(
         @ApplicationContext context: Context,
-    ): NiaDatabase = Room.databaseBuilder(
+    ): AppDatabase = Room.databaseBuilder(
         context,
-        NiaDatabase::class.java,
-        "nia-database",
+        AppDatabase::class.java,
+        "app-database",
     ).build()
 }

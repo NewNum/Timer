@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.huxh.apps.feature.home.HomeRoute
 import com.huxh.apps.feature.home.homeScreen
-import com.huxh.timer.ui.NiaAppState
+import com.huxh.timer.ui.AppState
 
 /**
  * Top-level navigation graph. Navigation is organized as explained at
@@ -17,8 +17,8 @@ import com.huxh.timer.ui.NiaAppState
  * within each route is handled using state and Back Handlers.
  */
 @Composable
-fun NiaNavHost(
-    appState: NiaAppState,
+fun AppNavHost(
+    appState: AppState,
     onShowSnackbar: suspend (String, String?) -> Boolean,
     modifier: Modifier = Modifier,
 ) {

@@ -14,21 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.huxh.apps.core.designsystem.icon.NiaIcons
-import com.huxh.apps.core.designsystem.theme.NiaTheme
+import com.huxh.apps.core.designsystem.icon.AppIcons
+import com.huxh.apps.core.designsystem.theme.AppTheme
 
-/**
- * Now in Android filter chip with included leading checked icon as well as text content slot.
- *
- * @param selected Whether the chip is currently checked.
- * @param onSelectedChange Called when the user clicks the chip and toggles checked.
- * @param modifier Modifier to be applied to the chip.
- * @param enabled Controls the enabled state of the chip. When `false`, this chip will not be
- * clickable and will appear disabled to accessibility services.
- * @param label The text label content.
- */
+
 @Composable
-fun NiaFilterChip(
+fun AppFilterChip(
     selected: Boolean,
     onSelectedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
@@ -48,7 +39,7 @@ fun NiaFilterChip(
         leadingIcon = if (selected) {
             {
                 Icon(
-                    imageVector = NiaIcons.Check,
+                    imageVector = AppIcons.Check,
                     contentDescription = null,
                 )
             }
@@ -62,28 +53,28 @@ fun NiaFilterChip(
             borderColor = MaterialTheme.colorScheme.onBackground,
             selectedBorderColor = MaterialTheme.colorScheme.onBackground,
             disabledBorderColor = MaterialTheme.colorScheme.onBackground.copy(
-                alpha = NiaChipDefaults.DISABLED_CHIP_CONTENT_ALPHA,
+                alpha = AppChipDefaults.DISABLED_CHIP_CONTENT_ALPHA,
             ),
             disabledSelectedBorderColor = MaterialTheme.colorScheme.onBackground.copy(
-                alpha = NiaChipDefaults.DISABLED_CHIP_CONTENT_ALPHA,
+                alpha = AppChipDefaults.DISABLED_CHIP_CONTENT_ALPHA,
             ),
-            selectedBorderWidth = NiaChipDefaults.ChipBorderWidth,
+            selectedBorderWidth = AppChipDefaults.ChipBorderWidth,
         ),
         colors = FilterChipDefaults.filterChipColors(
             labelColor = MaterialTheme.colorScheme.onBackground,
             iconColor = MaterialTheme.colorScheme.onBackground,
             disabledContainerColor = if (selected) {
                 MaterialTheme.colorScheme.onBackground.copy(
-                    alpha = NiaChipDefaults.DISABLED_CHIP_CONTAINER_ALPHA,
+                    alpha = AppChipDefaults.DISABLED_CHIP_CONTAINER_ALPHA,
                 )
             } else {
                 Color.Transparent
             },
             disabledLabelColor = MaterialTheme.colorScheme.onBackground.copy(
-                alpha = NiaChipDefaults.DISABLED_CHIP_CONTENT_ALPHA,
+                alpha = AppChipDefaults.DISABLED_CHIP_CONTENT_ALPHA,
             ),
             disabledLeadingIconColor = MaterialTheme.colorScheme.onBackground.copy(
-                alpha = NiaChipDefaults.DISABLED_CHIP_CONTENT_ALPHA,
+                alpha = AppChipDefaults.DISABLED_CHIP_CONTENT_ALPHA,
             ),
             selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
             selectedLabelColor = MaterialTheme.colorScheme.onBackground,
@@ -95,19 +86,16 @@ fun NiaFilterChip(
 @ThemePreviews
 @Composable
 fun ChipPreview() {
-    NiaTheme {
-        NiaBackground(modifier = Modifier.size(80.dp, 20.dp)) {
-            NiaFilterChip(selected = true, onSelectedChange = {}) {
+    AppTheme {
+        AppBackground(modifier = Modifier.size(80.dp, 20.dp)) {
+            AppFilterChip(selected = true, onSelectedChange = {}) {
                 Text("Chip")
             }
         }
     }
 }
 
-/**
- * Now in Android chip default values.
- */
-object NiaChipDefaults {
+object AppChipDefaults {
     // TODO: File bug
     // FilterChip default values aren't exposed via FilterChipDefaults
     const val DISABLED_CHIP_CONTAINER_ALPHA = 0.12f

@@ -22,10 +22,7 @@ import androidx.compose.material.icons.rounded.Upcoming
 import androidx.compose.material.icons.rounded.ViewDay
 import androidx.compose.ui.graphics.vector.ImageVector
 
-/**
- * Now in Android icons. Material icons are [ImageVector]s, custom icons are drawable resource IDs.
- */
-object NiaIcons {
+object AppIcons {
     val Add = Icons.Rounded.Add
     val ArrowBack = Icons.AutoMirrored.Rounded.ArrowBack
     val Bookmark = Icons.Rounded.Bookmark

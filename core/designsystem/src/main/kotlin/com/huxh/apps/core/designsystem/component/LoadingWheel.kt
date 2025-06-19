@@ -33,11 +33,11 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import com.huxh.apps.core.designsystem.theme.NiaTheme
+import com.huxh.apps.core.designsystem.theme.AppTheme
 import kotlinx.coroutines.launch
 
 @Composable
-fun NiaLoadingWheel(
+fun LoadingWheel(
     contentDesc: String,
     modifier: Modifier = Modifier,
 ) {
@@ -118,7 +118,7 @@ fun NiaLoadingWheel(
 }
 
 @Composable
-fun NiaOverlayLoadingWheel(
+fun AppOverlayLoadingWheel(
     contentDesc: String,
     modifier: Modifier = Modifier,
 ) {
@@ -129,7 +129,7 @@ fun NiaOverlayLoadingWheel(
         modifier = modifier
             .size(60.dp),
     ) {
-        NiaLoadingWheel(
+        LoadingWheel(
             contentDesc = contentDesc,
         )
     }
@@ -137,20 +137,20 @@ fun NiaOverlayLoadingWheel(
 
 @ThemePreviews
 @Composable
-fun NiaLoadingWheelPreview() {
-    NiaTheme {
+fun AppLoadingWheelPreview() {
+    AppTheme {
         Surface {
-            NiaLoadingWheel(contentDesc = "LoadingWheel")
+            LoadingWheel(contentDesc = "LoadingWheel")
         }
     }
 }
 
 @ThemePreviews
 @Composable
-fun NiaOverlayLoadingWheelPreview() {
-    NiaTheme {
+fun AppOverlayLoadingWheelPreview() {
+    AppTheme {
         Surface {
-            NiaOverlayLoadingWheel(contentDesc = "LoadingWheel")
+            AppOverlayLoadingWheel(contentDesc = "LoadingWheel")
         }
     }
 }

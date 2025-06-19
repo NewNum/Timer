@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.map
 import java.io.IOException
 import javax.inject.Inject
 
-class NiaPreferencesDataSource @Inject constructor(
+class AppPreferencesDataSource @Inject constructor(
     private val userPreferences: DataStore<UserPreferences>,
 ) {
     val userData = userPreferences.data
@@ -51,7 +51,7 @@ class NiaPreferencesDataSource @Inject constructor(
                 }
             }
         } catch (ioException: IOException) {
-            Log.e("NiaPreferences", "Failed to update user preferences", ioException)
+            Log.e("AppPreferences", "Failed to update user preferences", ioException)
         }
     }
 
@@ -68,7 +68,7 @@ class NiaPreferencesDataSource @Inject constructor(
                 }
             }
         } catch (ioException: IOException) {
-            Log.e("NiaPreferences", "Failed to update user preferences", ioException)
+            Log.e("AppPreferences", "Failed to update user preferences", ioException)
         }
     }
 
@@ -114,7 +114,7 @@ class NiaPreferencesDataSource @Inject constructor(
                 }
             }
         } catch (ioException: IOException) {
-            Log.e("NiaPreferences", "Failed to update user preferences", ioException)
+            Log.e("AppPreferences", "Failed to update user preferences", ioException)
         }
     }
 
@@ -164,7 +164,7 @@ class NiaPreferencesDataSource @Inject constructor(
                 }
             }
         } catch (ioException: IOException) {
-            Log.e("NiaPreferences", "Failed to update user preferences", ioException)
+            Log.e("AppPreferences", "Failed to update user preferences", ioException)
         }
     }
 

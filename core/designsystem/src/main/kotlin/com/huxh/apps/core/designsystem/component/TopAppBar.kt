@@ -19,12 +19,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.huxh.apps.core.designsystem.icon.NiaIcons
-import com.huxh.apps.core.designsystem.theme.NiaTheme
+import com.huxh.apps.core.designsystem.icon.AppIcons
+import com.huxh.apps.core.designsystem.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NiaTopAppBar(
+fun AppTopAppBar(
     @StringRes titleRes: Int,
     navigationIcon: ImageVector,
     navigationIconContentDescription: String,
@@ -56,20 +56,20 @@ fun NiaTopAppBar(
             }
         },
         colors = colors,
-        modifier = modifier.testTag("niaTopAppBar"),
+        modifier = modifier.testTag("appTopAppBar"),
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview("Top App Bar")
 @Composable
-private fun NiaTopAppBarPreview() {
-    NiaTheme {
-        NiaTopAppBar(
+private fun AppTopAppBarPreview() {
+    AppTheme {
+        AppTopAppBar(
             titleRes = android.R.string.untitled,
-            navigationIcon = NiaIcons.Search,
+            navigationIcon = AppIcons.Search,
             navigationIconContentDescription = "Navigation icon",
-            actionIcon = NiaIcons.MoreVert,
+            actionIcon = AppIcons.MoreVert,
             actionIconContentDescription = "Action icon",
         )
     }

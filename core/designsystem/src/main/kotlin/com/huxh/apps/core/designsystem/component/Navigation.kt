@@ -25,26 +25,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.huxh.apps.core.designsystem.icon.NiaIcons
-import com.huxh.apps.core.designsystem.theme.NiaTheme
+import com.huxh.apps.core.designsystem.icon.AppIcons
+import com.huxh.apps.core.designsystem.theme.AppTheme
 
-/**
- * Now in Android navigation bar item with icon and label content slots. Wraps Material 3
- * [NavigationBarItem].
- *
- * @param selected Whether this item is selected.
- * @param onClick The callback to be invoked when this item is selected.
- * @param icon The item icon content.
- * @param modifier Modifier to be applied to this item.
- * @param selectedIcon The item icon content when selected.
- * @param enabled controls the enabled state of this item. When `false`, this item will not be
- * clickable and will appear disabled to accessibility services.
- * @param label The item text label content.
- * @param alwaysShowLabel Whether to always show the label for this item. If false, the label will
- * only be shown when this item is selected.
- */
+
 @Composable
-fun RowScope.NiaNavigationBarItem(
+fun RowScope.AppNavigationBarItem(
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -63,52 +49,30 @@ fun RowScope.NiaNavigationBarItem(
         label = label,
         alwaysShowLabel = alwaysShowLabel,
         colors = NavigationBarItemDefaults.colors(
-            selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedIconColor = NiaNavigationDefaults.navigationContentColor(),
-            selectedTextColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedTextColor = NiaNavigationDefaults.navigationContentColor(),
-            indicatorColor = NiaNavigationDefaults.navigationIndicatorColor(),
+            selectedIconColor = AppNavigationDefaults.navigationSelectedItemColor(),
+            unselectedIconColor = AppNavigationDefaults.navigationContentColor(),
+            selectedTextColor = AppNavigationDefaults.navigationSelectedItemColor(),
+            unselectedTextColor = AppNavigationDefaults.navigationContentColor(),
+            indicatorColor = AppNavigationDefaults.navigationIndicatorColor(),
         ),
     )
 }
 
-/**
- * Now in Android navigation bar with content slot. Wraps Material 3 [NavigationBar].
- *
- * @param modifier Modifier to be applied to the navigation bar.
- * @param content Destinations inside the navigation bar. This should contain multiple
- * [NavigationBarItem]s.
- */
 @Composable
-fun NiaNavigationBar(
+fun AppNavigationBar(
     modifier: Modifier = Modifier,
     content: @Composable RowScope.() -> Unit,
 ) {
     NavigationBar(
         modifier = modifier,
-        contentColor = NiaNavigationDefaults.navigationContentColor(),
+        contentColor = AppNavigationDefaults.navigationContentColor(),
         tonalElevation = 0.dp,
         content = content,
     )
 }
 
-/**
- * Now in Android navigation rail item with icon and label content slots. Wraps Material 3
- * [NavigationRailItem].
- *
- * @param selected Whether this item is selected.
- * @param onClick The callback to be invoked when this item is selected.
- * @param icon The item icon content.
- * @param modifier Modifier to be applied to this item.
- * @param selectedIcon The item icon content when selected.
- * @param enabled controls the enabled state of this item. When `false`, this item will not be
- * clickable and will appear disabled to accessibility services.
- * @param label The item text label content.
- * @param alwaysShowLabel Whether to always show the label for this item. If false, the label will
- * only be shown when this item is selected.
- */
 @Composable
-fun NiaNavigationRailItem(
+fun AppNavigationRailItem(
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -127,25 +91,17 @@ fun NiaNavigationRailItem(
         label = label,
         alwaysShowLabel = alwaysShowLabel,
         colors = NavigationRailItemDefaults.colors(
-            selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedIconColor = NiaNavigationDefaults.navigationContentColor(),
-            selectedTextColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedTextColor = NiaNavigationDefaults.navigationContentColor(),
-            indicatorColor = NiaNavigationDefaults.navigationIndicatorColor(),
+            selectedIconColor = AppNavigationDefaults.navigationSelectedItemColor(),
+            unselectedIconColor = AppNavigationDefaults.navigationContentColor(),
+            selectedTextColor = AppNavigationDefaults.navigationSelectedItemColor(),
+            unselectedTextColor = AppNavigationDefaults.navigationContentColor(),
+            indicatorColor = AppNavigationDefaults.navigationIndicatorColor(),
         ),
     )
 }
 
-/**
- * Now in Android navigation rail with header and content slots. Wraps Material 3 [NavigationRail].
- *
- * @param modifier Modifier to be applied to the navigation rail.
- * @param header Optional header that may hold a floating action button or a logo.
- * @param content Destinations inside the navigation rail. This should contain multiple
- * [NavigationRailItem]s.
- */
 @Composable
-fun NiaNavigationRail(
+fun AppNavigationRail(
     modifier: Modifier = Modifier,
     header: @Composable (ColumnScope.() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit,
@@ -153,24 +109,15 @@ fun NiaNavigationRail(
     NavigationRail(
         modifier = modifier,
         containerColor = Color.Transparent,
-        contentColor = NiaNavigationDefaults.navigationContentColor(),
+        contentColor = AppNavigationDefaults.navigationContentColor(),
         header = header,
         content = content,
     )
 }
 
-/**
- * Now in Android navigation suite scaffold with item and content slots.
- * Wraps Material 3 [NavigationSuiteScaffold].
- *
- * @param modifier Modifier to be applied to the navigation suite scaffold.
- * @param navigationSuiteItems A slot to display multiple items via [NiaNavigationSuiteScope].
- * @param windowAdaptiveInfo The window adaptive info.
- * @param content The app content inside the scaffold.
- */
 @Composable
-fun NiaNavigationSuiteScaffold(
-    navigationSuiteItems: NiaNavigationSuiteScope.() -> Unit,
+fun AppNavigationSuiteScaffold(
+    navigationSuiteItems: AppNavigationSuiteScope.() -> Unit,
     modifier: Modifier = Modifier,
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo(),
     content: @Composable () -> Unit,
@@ -179,30 +126,30 @@ fun NiaNavigationSuiteScaffold(
         .calculateFromAdaptiveInfo(windowAdaptiveInfo)
     val navigationSuiteItemColors = NavigationSuiteItemColors(
         navigationBarItemColors = NavigationBarItemDefaults.colors(
-            selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedIconColor = NiaNavigationDefaults.navigationContentColor(),
-            selectedTextColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedTextColor = NiaNavigationDefaults.navigationContentColor(),
-            indicatorColor = NiaNavigationDefaults.navigationIndicatorColor(),
+            selectedIconColor = AppNavigationDefaults.navigationSelectedItemColor(),
+            unselectedIconColor = AppNavigationDefaults.navigationContentColor(),
+            selectedTextColor = AppNavigationDefaults.navigationSelectedItemColor(),
+            unselectedTextColor = AppNavigationDefaults.navigationContentColor(),
+            indicatorColor = AppNavigationDefaults.navigationIndicatorColor(),
         ),
         navigationRailItemColors = NavigationRailItemDefaults.colors(
-            selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedIconColor = NiaNavigationDefaults.navigationContentColor(),
-            selectedTextColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedTextColor = NiaNavigationDefaults.navigationContentColor(),
-            indicatorColor = NiaNavigationDefaults.navigationIndicatorColor(),
+            selectedIconColor = AppNavigationDefaults.navigationSelectedItemColor(),
+            unselectedIconColor = AppNavigationDefaults.navigationContentColor(),
+            selectedTextColor = AppNavigationDefaults.navigationSelectedItemColor(),
+            unselectedTextColor = AppNavigationDefaults.navigationContentColor(),
+            indicatorColor = AppNavigationDefaults.navigationIndicatorColor(),
         ),
         navigationDrawerItemColors = NavigationDrawerItemDefaults.colors(
-            selectedIconColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedIconColor = NiaNavigationDefaults.navigationContentColor(),
-            selectedTextColor = NiaNavigationDefaults.navigationSelectedItemColor(),
-            unselectedTextColor = NiaNavigationDefaults.navigationContentColor(),
+            selectedIconColor = AppNavigationDefaults.navigationSelectedItemColor(),
+            unselectedIconColor = AppNavigationDefaults.navigationContentColor(),
+            selectedTextColor = AppNavigationDefaults.navigationSelectedItemColor(),
+            unselectedTextColor = AppNavigationDefaults.navigationContentColor(),
         ),
     )
 
     NavigationSuiteScaffold(
         navigationSuiteItems = {
-            NiaNavigationSuiteScope(
+            AppNavigationSuiteScope(
                 navigationSuiteScope = this,
                 navigationSuiteItemColors = navigationSuiteItemColors,
             ).run(navigationSuiteItems)
@@ -210,7 +157,7 @@ fun NiaNavigationSuiteScaffold(
         layoutType = layoutType,
         containerColor = Color.Transparent,
         navigationSuiteColors = NavigationSuiteDefaults.colors(
-            navigationBarContentColor = NiaNavigationDefaults.navigationContentColor(),
+            navigationBarContentColor = AppNavigationDefaults.navigationContentColor(),
             navigationRailContainerColor = Color.Transparent,
         ),
         modifier = modifier,
@@ -219,10 +166,7 @@ fun NiaNavigationSuiteScaffold(
     }
 }
 
-/**
- * A wrapper around [NavigationSuiteScope] to declare navigation items.
- */
-class NiaNavigationSuiteScope internal constructor(
+class AppNavigationSuiteScope internal constructor(
     private val navigationSuiteScope: NavigationSuiteScope,
     private val navigationSuiteItemColors: NavigationSuiteItemColors,
 ) {
@@ -251,23 +195,23 @@ class NiaNavigationSuiteScope internal constructor(
 
 @ThemePreviews
 @Composable
-fun NiaNavigationBarPreview() {
+fun AppNavigationBarPreview() {
     val items = listOf("For you", "Saved", "Interests")
     val icons = listOf(
-        NiaIcons.UpcomingBorder,
-        NiaIcons.BookmarksBorder,
-        NiaIcons.Grid3x3,
+        AppIcons.UpcomingBorder,
+        AppIcons.BookmarksBorder,
+        AppIcons.Grid3x3,
     )
     val selectedIcons = listOf(
-        NiaIcons.Upcoming,
-        NiaIcons.Bookmarks,
-        NiaIcons.Grid3x3,
+        AppIcons.Upcoming,
+        AppIcons.Bookmarks,
+        AppIcons.Grid3x3,
     )
 
-    NiaTheme {
-        NiaNavigationBar {
+    AppTheme {
+        AppNavigationBar {
             items.forEachIndexed { index, item ->
-                NiaNavigationBarItem(
+                AppNavigationBarItem(
                     icon = {
                         Icon(
                             imageVector = icons[index],
@@ -291,23 +235,23 @@ fun NiaNavigationBarPreview() {
 
 @ThemePreviews
 @Composable
-fun NiaNavigationRailPreview() {
+fun AppNavigationRailPreview() {
     val items = listOf("For you", "Saved", "Interests")
     val icons = listOf(
-        NiaIcons.UpcomingBorder,
-        NiaIcons.BookmarksBorder,
-        NiaIcons.Grid3x3,
+        AppIcons.UpcomingBorder,
+        AppIcons.BookmarksBorder,
+        AppIcons.Grid3x3,
     )
     val selectedIcons = listOf(
-        NiaIcons.Upcoming,
-        NiaIcons.Bookmarks,
-        NiaIcons.Grid3x3,
+        AppIcons.Upcoming,
+        AppIcons.Bookmarks,
+        AppIcons.Grid3x3,
     )
 
-    NiaTheme {
-        NiaNavigationRail {
+    AppTheme {
+        AppNavigationRail {
             items.forEachIndexed { index, item ->
-                NiaNavigationRailItem(
+                AppNavigationRailItem(
                     icon = {
                         Icon(
                             imageVector = icons[index],
@@ -329,10 +273,7 @@ fun NiaNavigationRailPreview() {
     }
 }
 
-/**
- * Now in Android navigation default values.
- */
-object NiaNavigationDefaults {
+object AppNavigationDefaults {
     @Composable
     fun navigationContentColor() = MaterialTheme.colorScheme.onSurfaceVariant
 

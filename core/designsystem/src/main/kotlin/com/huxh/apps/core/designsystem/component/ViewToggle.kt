@@ -17,23 +17,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.huxh.apps.core.designsystem.icon.NiaIcons
-import com.huxh.apps.core.designsystem.theme.NiaTheme
+import com.huxh.apps.core.designsystem.icon.AppIcons
+import com.huxh.apps.core.designsystem.theme.AppTheme
 
-/**
- * Now in Android view toggle button with included trailing icon as well as compact and expanded
- * text label content slots.
- *
- * @param expanded Whether the view toggle is currently in expanded mode or compact mode.
- * @param onExpandedChange Called when the user clicks the button and toggles the mode.
- * @param modifier Modifier to be applied to the button.
- * @param enabled Controls the enabled state of the button. When `false`, this button will not be
- * clickable and will appear disabled to accessibility services.
- * @param compactText The text label content to show in expanded mode.
- * @param expandedText The text label content to show in compact mode.
- */
+
 @Composable
-fun NiaViewToggleButton(
+fun AppViewToggleButton(
     expanded: Boolean,
     onExpandedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
@@ -48,13 +37,13 @@ fun NiaViewToggleButton(
         colors = ButtonDefaults.textButtonColors(
             contentColor = MaterialTheme.colorScheme.onBackground,
         ),
-        contentPadding = NiaViewToggleDefaults.ViewToggleButtonContentPadding,
+        contentPadding = AppViewToggleDefaults.ViewToggleButtonContentPadding,
     ) {
-        NiaViewToggleButtonContent(
+        AppViewToggleButtonContent(
             text = if (expanded) expandedText else compactText,
             trailingIcon = {
                 Icon(
-                    imageVector = if (expanded) NiaIcons.ViewDay else NiaIcons.ShortText,
+                    imageVector = if (expanded) AppIcons.ViewDay else AppIcons.ShortText,
                     contentDescription = null,
                 )
             },
@@ -62,15 +51,8 @@ fun NiaViewToggleButton(
     }
 }
 
-/**
- * Internal Now in Android view toggle button content layout for arranging the text label and
- * trailing icon.
- *
- * @param text The button text label content.
- * @param trailingIcon The button trailing icon content. Default is `null` for no trailing icon.
- */
 @Composable
-private fun NiaViewToggleButtonContent(
+private fun AppViewToggleButtonContent(
     text: @Composable () -> Unit,
     trailingIcon: @Composable (() -> Unit)? = null,
 ) {
@@ -98,9 +80,9 @@ private fun NiaViewToggleButtonContent(
 @ThemePreviews
 @Composable
 fun ViewTogglePreviewExpanded() {
-    NiaTheme {
+    AppTheme {
         Surface {
-            NiaViewToggleButton(
+            AppViewToggleButton(
                 expanded = true,
                 onExpandedChange = { },
                 compactText = { Text(text = "Compact view") },
@@ -113,9 +95,9 @@ fun ViewTogglePreviewExpanded() {
 @Preview
 @Composable
 fun ViewTogglePreviewCompact() {
-    NiaTheme {
+    AppTheme {
         Surface {
-            NiaViewToggleButton(
+            AppViewToggleButton(
                 expanded = false,
                 onExpandedChange = { },
                 compactText = { Text(text = "Compact view") },
@@ -125,10 +107,7 @@ fun ViewTogglePreviewCompact() {
     }
 }
 
-/**
- * Now in Android view toggle default values.
- */
-object NiaViewToggleDefaults {
+object AppViewToggleDefaults {
     // TODO: File bug
     // Various default button padding values aren't exposed via ButtonDefaults
     val ViewToggleButtonContentPadding =

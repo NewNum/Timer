@@ -19,6 +19,6 @@ import com.huxh.apps.core.database.util.InstantConverter
 @TypeConverters(
     InstantConverter::class,
 )
-internal abstract class NiaDatabase : RoomDatabase() {
+internal abstract class AppDatabase : RoomDatabase() {
     abstract fun topicDao(): TopicDao
 }

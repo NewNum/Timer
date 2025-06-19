@@ -8,11 +8,8 @@ import com.huxh.timer.util.ProfileVerifierLogger
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
-/**
- * [Application] class for NiA
- */
 @HiltAndroidApp
-class NiaApplication : Application() {
+class App : Application() {
 
 
     @Inject

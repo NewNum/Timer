@@ -19,11 +19,11 @@ import androidx.metrics.performance.JankStats
 import androidx.tracing.trace
 import com.huxh.apps.core.data.util.NetworkMonitor
 import com.huxh.apps.core.data.util.TimeZoneMonitor
-import com.huxh.apps.core.designsystem.theme.NiaTheme
+import com.huxh.apps.core.designsystem.theme.AppTheme
 import com.huxh.apps.core.ui.LocalTimeZone
 import com.huxh.timer.MainActivityUiState.Loading
-import com.huxh.timer.ui.NiaApp
-import com.huxh.timer.ui.rememberNiaAppState
+import com.huxh.timer.ui.AppScreen
+import com.huxh.timer.ui.rememberAppState
 import com.huxh.timer.util.isSystemInDarkTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
@@ -81,7 +81,7 @@ class MainActivity : ComponentActivity() {
                     .map { it.darkTheme }
                     .distinctUntilChanged()
                     .collect { darkTheme ->
-                        trace("niaEdgeToEdge") {
+                        trace("appEdgeToEdge") {
                             // Turn off the decor fitting system windows, which allows us to handle insets,
                             // including IME animations, and go edge-to-edge.
                             // This is the same parameters as the default enableEdgeToEdge call, but we manually
@@ -108,7 +108,7 @@ class MainActivity : ComponentActivity() {
         splashScreen.setKeepOnScreenCondition { viewModel.uiState.value.shouldKeepSplashScreen() }
 
         setContent {
-            val appState = rememberNiaAppState(
+            val appState = rememberAppState(
                 networkMonitor = networkMonitor,
                 timeZoneMonitor = timeZoneMonitor,
             )
@@ -118,12 +118,12 @@ class MainActivity : ComponentActivity() {
             CompositionLocalProvider(
                 LocalTimeZone provides currentTimeZone,
             ) {
-                NiaTheme(
+                AppTheme(
                     darkTheme = themeSettings.darkTheme,
                     androidTheme = themeSettings.androidTheme,
                     disableDynamicTheming = themeSettings.disableDynamicTheming,
                 ) {
-                    NiaApp(appState)
+                    AppScreen(appState)
                 }
             }
         }

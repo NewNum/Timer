@@ -2,7 +2,7 @@
 
 package com.huxh.apps.core.database.di
 
-import com.huxh.apps.core.database.NiaDatabase
+import com.huxh.apps.core.database.AppDatabase
 import com.huxh.apps.core.database.dao.TopicDao
 import dagger.Module
 import dagger.Provides
@@ -14,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 internal object DaosModule {
     @Provides
     fun providesTopicsDao(
-        database: NiaDatabase,
+        database: AppDatabase,
     ): TopicDao = database.topicDao()
 
 }

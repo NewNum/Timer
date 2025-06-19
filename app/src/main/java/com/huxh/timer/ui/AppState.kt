@@ -20,12 +20,12 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.TimeZone
 
 @Composable
-fun rememberNiaAppState(
+fun rememberAppState(
     networkMonitor: NetworkMonitor,
     timeZoneMonitor: TimeZoneMonitor,
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
     navController: NavHostController = rememberNavController(),
-): NiaAppState {
+): AppState {
     NavigationTrackingSideEffect(navController)
     return remember(
         navController,
@@ -33,7 +33,7 @@ fun rememberNiaAppState(
         networkMonitor,
         timeZoneMonitor,
     ) {
-        NiaAppState(
+        AppState(
             navController = navController,
             coroutineScope = coroutineScope,
             networkMonitor = networkMonitor,
@@ -43,7 +43,7 @@ fun rememberNiaAppState(
 }
 
 @Stable
-class NiaAppState(
+class AppState(
     val navController: NavHostController,
     coroutineScope: CoroutineScope,
     networkMonitor: NetworkMonitor,

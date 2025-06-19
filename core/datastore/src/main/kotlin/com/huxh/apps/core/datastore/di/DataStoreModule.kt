@@ -10,7 +10,7 @@ import com.huxh.apps.core.datastore.IntToStringIdsMigration
 import com.huxh.apps.core.datastore.UserPreferences
 import com.huxh.apps.core.datastore.UserPreferencesSerializer
 import com.huxh.apps.core.network.Dispatcher
-import com.huxh.apps.core.network.NiaDispatchers.IO
+import com.huxh.apps.core.network.AppDispatchers.IO
 import com.huxh.apps.core.network.di.ApplicationScope
 import dagger.Module
 import dagger.Provides
