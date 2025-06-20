@@ -1,14 +1,11 @@
-
-
 package com.huxh.apps.core.datastore.di
 
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
-import com.huxh.apps.core.datastore.IntToStringIdsMigration
-import com.huxh.apps.core.datastore.UserPreferences
-import com.huxh.apps.core.datastore.UserPreferencesSerializer
+import com.huxh.apps.core.datastore.AppPreferences
+import com.huxh.apps.core.datastore.AppPreferencesSerializer
 import com.huxh.apps.core.network.Dispatcher
 import com.huxh.apps.core.network.AppDispatchers.IO
 import com.huxh.apps.core.network.di.ApplicationScope
@@ -27,19 +24,17 @@ object DataStoreModule {
 
     @Provides
     @Singleton
-    internal fun providesUserPreferencesDataStore(
+    internal fun providesAppPreferencesDataStore(
         @ApplicationContext context: Context,
         @Dispatcher(IO) ioDispatcher: CoroutineDispatcher,
         @ApplicationScope scope: CoroutineScope,
-        userPreferencesSerializer: UserPreferencesSerializer,
-    ): DataStore<UserPreferences> =
+        appPreferencesSerializer: AppPreferencesSerializer,
+    ): DataStore<AppPreferences> =
         DataStoreFactory.create(
-            serializer = userPreferencesSerializer,
+            serializer = appPreferencesSerializer,
             scope = CoroutineScope(scope.coroutineContext + ioDispatcher),
-            migrations = listOf(
-                IntToStringIdsMigration,
-            ),
+            migrations = listOf(),
         ) {
-            context.dataStoreFile("user_preferences.pb")
+            context.dataStoreFile("app_preferences.pb")
         }
 }

@@ -3,13 +3,16 @@ package com.huxh.apps.core.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.huxh.apps.core.database.dao.TopicDao
-import com.huxh.apps.core.database.model.TopicEntity
+import com.huxh.apps.core.database.dao.ProjectDao
+import com.huxh.apps.core.database.dao.TaskDao
+import com.huxh.apps.core.database.model.ProjectEntity
+import com.huxh.apps.core.database.model.TaskEntity
 import com.huxh.apps.core.database.util.InstantConverter
 
 @Database(
     entities = [
-        TopicEntity::class,
+        ProjectEntity::class,
+        TaskEntity::class,
     ],
     version = 1,
     autoMigrations = [
@@ -20,5 +23,9 @@ import com.huxh.apps.core.database.util.InstantConverter
     InstantConverter::class,
 )
 internal abstract class AppDatabase : RoomDatabase() {
-    abstract fun topicDao(): TopicDao
+
+    abstract fun projectDao(): ProjectDao
+
+    abstract fun taskDao(): TaskDao
+
 }

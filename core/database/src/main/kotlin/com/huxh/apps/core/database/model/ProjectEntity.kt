@@ -3,25 +3,21 @@ package com.huxh.apps.core.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.huxh.apps.core.model.data.Topic
 
 @Entity(
-    tableName = "topics",
+    tableName = "projects",
 )
-data class TopicEntity(
+data class ProjectEntity(
     @PrimaryKey
     val id: Long,
     val name: String,
     @ColumnInfo(defaultValue = "")
     val description: String,
+    val duration: Long,
+    @ColumnInfo(name = "repeat_count")
+    val repeatCount: Int,
+    @ColumnInfo(name = "create_timestamp")
     val createTimestamp: Long,
+    @ColumnInfo(name = "update_timestamp")
     val updateTimestamp: Long,
-)
-
-fun TopicEntity.asExternalModel() = Topic(
-    id = id,
-    name = name,
-    description = description,
-    createTimestamp = createTimestamp,
-    updateTimestamp = updateTimestamp,
 )

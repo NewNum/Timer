@@ -1,5 +1,3 @@
-
-
 package com.huxh.apps.core.datastore
 
 import androidx.datastore.core.CorruptionException
@@ -9,21 +7,18 @@ import java.io.InputStream
 import java.io.OutputStream
 import javax.inject.Inject
 
-/**
- * An [androidx.datastore.core.Serializer] for the [UserPreferences] proto.
- */
-class UserPreferencesSerializer @Inject constructor() : Serializer<UserPreferences> {
-    override val defaultValue: UserPreferences = UserPreferences.getDefaultInstance()
+class AppPreferencesSerializer @Inject constructor() : Serializer<AppPreferences> {
+    override val defaultValue: AppPreferences = AppPreferences.getDefaultInstance()
 
-    override suspend fun readFrom(input: InputStream): UserPreferences =
+    override suspend fun readFrom(input: InputStream): AppPreferences =
         try {
             // readFrom is already called on the data store background thread
-            UserPreferences.parseFrom(input)
+            AppPreferences.parseFrom(input)
         } catch (exception: InvalidProtocolBufferException) {
             throw CorruptionException("Cannot read proto.", exception)
         }
 
-    override suspend fun writeTo(t: UserPreferences, output: OutputStream) {
+    override suspend fun writeTo(t: AppPreferences, output: OutputStream) {
         // writeTo is already called on the data store background thread
         t.writeTo(output)
     }

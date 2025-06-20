@@ -2,10 +2,10 @@ package com.huxh.timer
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.huxh.apps.core.data.repository.UserDataRepository
+import com.huxh.apps.core.data.repository.AppConfigRepository
 import com.huxh.apps.core.model.data.DarkThemeConfig
 import com.huxh.apps.core.model.data.ThemeBrand
-import com.huxh.apps.core.model.data.UserData
+import com.huxh.apps.core.model.data.AppConfigData
 import com.huxh.timer.MainActivityUiState.Loading
 import com.huxh.timer.MainActivityUiState.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,9 +17,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    userDataRepository: UserDataRepository,
+    appConfigRepository: AppConfigRepository,
 ) : ViewModel() {
-    val uiState: StateFlow<MainActivityUiState> = userDataRepository.userData.map {
+    val uiState: StateFlow<MainActivityUiState> = appConfigRepository.appConfigData.map {
         Success(it)
     }.stateIn(
         scope = viewModelScope,
@@ -31,16 +31,16 @@ class MainActivityViewModel @Inject constructor(
 sealed interface MainActivityUiState {
     data object Loading : MainActivityUiState
 
-    data class Success(val userData: UserData) : MainActivityUiState {
-        override val shouldDisableDynamicTheming = !userData.useDynamicColor
+    data class Success(val appConfigData: AppConfigData) : MainActivityUiState {
+        override val shouldDisableDynamicTheming = !appConfigData.useDynamicColor
 
-        override val shouldUseAndroidTheme: Boolean = when (userData.themeBrand) {
+        override val shouldUseAndroidTheme: Boolean = when (appConfigData.themeBrand) {
             ThemeBrand.DEFAULT -> false
             ThemeBrand.ANDROID -> true
         }
 
         override fun shouldUseDarkTheme(isSystemDarkTheme: Boolean) =
-            when (userData.darkThemeConfig) {
+            when (appConfigData.darkThemeConfig) {
                 DarkThemeConfig.FOLLOW_SYSTEM -> isSystemDarkTheme
                 DarkThemeConfig.LIGHT -> false
                 DarkThemeConfig.DARK -> true

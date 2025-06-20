@@ -2,8 +2,8 @@
 
 package com.huxh.apps.core.data.di
 
-import com.huxh.apps.core.data.repository.OfflineFirstUserDataRepository
-import com.huxh.apps.core.data.repository.UserDataRepository
+import com.huxh.apps.core.data.repository.AppConfigRepository
+import com.huxh.apps.core.data.repository.DefaultAppConfigRepository
 import com.huxh.apps.core.data.util.ConnectivityManagerNetworkMonitor
 import com.huxh.apps.core.data.util.NetworkMonitor
 import com.huxh.apps.core.data.util.TimeZoneBroadcastMonitor
@@ -17,9 +17,9 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class DataModule {
     @Binds
-    internal abstract fun bindsUserDataRepository(
-        userDataRepository: OfflineFirstUserDataRepository,
-    ): UserDataRepository
+    internal abstract fun bindsAppConfigRepository(
+        appConfigRepository: DefaultAppConfigRepository,
+    ): AppConfigRepository
 
     @Binds
     internal abstract fun bindsNetworkMonitor(
