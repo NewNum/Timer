@@ -7,6 +7,8 @@ import com.huxh.apps.feature.home.HomeRoute
 import com.huxh.apps.feature.home.homeScreen
 import com.huxh.apps.feature.time.create.createTimeScreen
 import com.huxh.apps.feature.time.create.navigateToCreateTime
+import com.huxh.apps.feature.time.start.navigateToTime
+import com.huxh.apps.feature.time.start.timeScreen
 import com.huxh.timer.ui.AppState
 
 /**
@@ -29,9 +31,13 @@ fun AppNavHost(
         modifier = modifier,
     ) {
         homeScreen(
-            navigateToCreateTime = navController::navigateToCreateTime
+            navigateToCreateTime = navController::navigateToCreateTime,
+            navigateToTime = navController::navigateToTime,
         )
         createTimeScreen(
+            navigateUp = navController::navigateUp
+        )
+        timeScreen(
             navigateUp = navController::navigateUp
         )
     }

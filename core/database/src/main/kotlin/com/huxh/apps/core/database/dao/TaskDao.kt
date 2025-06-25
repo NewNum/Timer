@@ -17,7 +17,15 @@ interface  TaskDao {
         WHERE project_id = :projectId
     """,
     )
-    fun getTaskEntity(projectId: Long): Flow<List<TaskEntity>>
+    suspend fun getTaskEntity(projectId: Long): List<TaskEntity>
+
+    @Query(
+        value = """
+        SELECT * FROM tasks
+        WHERE project_id = :projectId
+    """,
+    )
+    fun getTaskEntityFlow(projectId: Long): Flow<List<TaskEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOrIgnoreTasks(topicEntities: List<TaskEntity>): List<Long>

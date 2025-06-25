@@ -17,7 +17,7 @@ interface ProjectDao {
         WHERE id = :projectId
     """,
     )
-    fun getProjectEntity(projectId: Long): Flow<ProjectEntity>
+    fun getProjectEntity(projectId: Long): Flow<ProjectEntity?>
 
     @Query(
         value = """

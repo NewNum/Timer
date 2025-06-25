@@ -18,6 +18,5 @@ dependencies {
 
     testImplementation(libs.hilt.android.testing)
     testImplementation(libs.robolectric)
-
     androidTestImplementation(libs.bundles.androidx.compose.ui.test)
 }

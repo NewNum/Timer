@@ -64,7 +64,7 @@ fun <T> WheelPicker(
                     coroutineScope.launch {
                         listState.animateScrollToItem(snapToIndex)
                     }
-                    val selectedValueIndex = snapToIndex + centerIndex
+                    val selectedValueIndex = (snapToIndex + centerIndex) % items.size
                     if (selectedValueIndex in items.indices) {
                         onValueSelected(items.elementAt(selectedValueIndex))
                     }
@@ -97,6 +97,7 @@ fun <T> WheelPicker(
 fun TimePicker(
     modifier: Modifier = Modifier,
     mask: Color = LocalBackgroundTheme.current.color,
+    start: Triple<Int, Int, Int> = Triple(0, 0, 0),
     onValueSelected: (Long) -> Unit
 ) {
     val itemHeight = 60.dp
@@ -106,9 +107,9 @@ fun TimePicker(
         fontWeight = FontWeight.Bold,
     )
     val visibleItemCount = 3
-    var hour by remember() { mutableIntStateOf(0) }
-    var minute by remember() { mutableIntStateOf(0) }
-    var second by remember() { mutableIntStateOf(0) }
+    var hour by remember() { mutableIntStateOf(start.first) }
+    var minute by remember() { mutableIntStateOf(start.second) }
+    var second by remember() { mutableIntStateOf(start.third) }
     val hourList = List(24) { it }
     val minuteList = List(60) { it }
     val secondList = List(60) { it }
@@ -127,7 +128,7 @@ fun TimePicker(
                 format = { String.format("%02d", it) },
                 textStyle = textStyle,
             ) {
-                hour = it
+                hour
                 onValueChange.invoke()
             }
             Text(
@@ -142,7 +143,7 @@ fun TimePicker(
                 format = { String.format("%02d", it) },
                 textStyle = textStyle,
             ) {
-                minute = it
+                minute
                 onValueChange.invoke()
             }
             Text(

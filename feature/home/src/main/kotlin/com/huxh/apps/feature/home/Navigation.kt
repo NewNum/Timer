@@ -14,8 +14,12 @@ fun NavController.navigateToHome(navOptions: NavOptions? = null) =
 
 fun NavGraphBuilder.homeScreen(
     navigateToCreateTime: () -> Unit,
+    navigateToTime: (Long) -> Unit,
 ) {
     composable<HomeRoute> {
-        HomeScreen(navigateToCreateTime = navigateToCreateTime)
+        HomeScreen(
+            navigateToCreateTime = navigateToCreateTime,
+            navigateToTime = navigateToTime,
+        )
     }
 }
