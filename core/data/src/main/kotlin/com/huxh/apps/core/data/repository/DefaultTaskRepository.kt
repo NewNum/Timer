@@ -16,4 +16,12 @@ internal class DefaultTaskRepository @Inject constructor(
         return taskDao.getTaskEntityFlow(projectId)
     }
 
+    override suspend fun deleteTaskByProjectId(projectId: Long) {
+        taskDao.deleteTaskByProjectId(projectId)
+    }
+
+    override suspend fun insertTask(taskEntities: List<TaskEntity>): List<Long> {
+        return taskDao.insertOrIgnoreTasks(taskEntities)
+    }
+
 }

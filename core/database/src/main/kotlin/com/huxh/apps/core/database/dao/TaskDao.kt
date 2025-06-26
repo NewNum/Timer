@@ -15,6 +15,7 @@ interface  TaskDao {
         value = """
         SELECT * FROM tasks
         WHERE project_id = :projectId
+        ORDER BY sort_order ASC 
     """,
     )
     suspend fun getTaskEntity(projectId: Long): List<TaskEntity>
@@ -23,6 +24,7 @@ interface  TaskDao {
         value = """
         SELECT * FROM tasks
         WHERE project_id = :projectId
+        ORDER BY sort_order ASC 
     """,
     )
     fun getTaskEntityFlow(projectId: Long): Flow<List<TaskEntity>>
@@ -40,5 +42,13 @@ interface  TaskDao {
         """,
     )
     suspend fun deleteTasks(ids: List<String>)
+
+    @Query(
+        value = """
+            DELETE FROM tasks
+            WHERE project_id = :projectId
+        """,
+    )
+    suspend fun deleteTaskByProjectId(projectId: Long)
 
 }

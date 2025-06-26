@@ -9,4 +9,8 @@ interface TaskRepository {
 
     fun getTasksFlow(projectId: Long): Flow<List<TaskEntity>>
 
+    suspend fun deleteTaskByProjectId(projectId: Long)
+
+    suspend fun insertTask(taskEntities: List<TaskEntity>): List<Long>
+
 }

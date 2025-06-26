@@ -1,6 +1,5 @@
 package com.huxh.apps.core.ui
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -128,7 +127,7 @@ fun TimePicker(
                 format = { String.format("%02d", it) },
                 textStyle = textStyle,
             ) {
-                hour
+                hour = it
                 onValueChange.invoke()
             }
             Text(
@@ -143,7 +142,7 @@ fun TimePicker(
                 format = { String.format("%02d", it) },
                 textStyle = textStyle,
             ) {
-                minute
+                minute = it
                 onValueChange.invoke()
             }
             Text(

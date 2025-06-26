@@ -32,13 +32,24 @@ fun AppNavHost(
     ) {
         homeScreen(
             navigateToCreateTime = navController::navigateToCreateTime,
-            navigateToTime = navController::navigateToTime,
+            navigateToTime = { navController.navigateToTime(it) },
         )
         createTimeScreen(
-            navigateUp = navController::navigateUp
+            navigateUp = navController::navigateUp,
+            navigateToTime = {
+                navController.navigateToTime(
+                    it,
+                ) {
+                    popUpTo(HomeRoute) {
+                        inclusive = true
+                    }
+                    launchSingleTop = true
+                }
+            },
         )
         timeScreen(
-            navigateUp = navController::navigateUp
+            navigateUp = navController::navigateUp,
+            navigateToCreateTime = navController::navigateToCreateTime,
         )
     }
 }

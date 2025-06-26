@@ -5,8 +5,15 @@ import kotlinx.coroutines.flow.Flow
 
 interface ProjectRepository {
 
-    fun getProject(projectId: Long): Flow<ProjectEntity?>
+    fun getProjectFlow(projectId: Long): Flow<ProjectEntity?>
+
+    suspend fun getProject(projectId: Long): ProjectEntity?
 
     fun getAllProject(): Flow<List<ProjectEntity>>
+
+    suspend fun insertOrIgnoreProject(projectEntity: ProjectEntity): Long
+
+    suspend fun upsertProject(entity: ProjectEntity): Long
+
 
 }

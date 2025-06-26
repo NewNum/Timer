@@ -7,15 +7,22 @@ import androidx.navigation.compose.composable
 import kotlinx.serialization.Serializable
 
 @Serializable
-private data object CreateTimeRoute
+internal data class CreateTimeRoute(val projectId: Long = 0L)
 
-fun NavController.navigateToCreateTime(navOptions: NavOptions? = null) =
-    navigate(route = CreateTimeRoute, navOptions)
+fun NavController.navigateToCreateTime(
+    projectId: Long = 0L,
+    navOptions: NavOptions? = null,
+) =
+    navigate(route = CreateTimeRoute(projectId), navOptions)
 
 fun NavGraphBuilder.createTimeScreen(
     navigateUp: () -> Unit,
+    navigateToTime: (Long) -> Unit,
 ) {
     composable<CreateTimeRoute> {
-        CreateTimeScreen(navigateUp)
+        CreateTimeScreen(
+            navigateUp = navigateUp,
+            navigateToTime = navigateToTime,
+        )
     }
 }

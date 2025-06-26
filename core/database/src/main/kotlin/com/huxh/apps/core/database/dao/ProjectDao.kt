@@ -17,7 +17,15 @@ interface ProjectDao {
         WHERE id = :projectId
     """,
     )
-    fun getProjectEntity(projectId: Long): Flow<ProjectEntity?>
+    fun getProjectEntityFlow(projectId: Long): Flow<ProjectEntity?>
+
+    @Query(
+        value = """
+        SELECT * FROM projects
+        WHERE id = :projectId
+    """,
+    )
+   suspend fun getProjectEntity(projectId: Long): ProjectEntity?
 
     @Query(
         value = """
@@ -30,7 +38,13 @@ interface ProjectDao {
     suspend fun insertOrIgnoreProjects(topicEntities: List<ProjectEntity>): List<Long>
 
     @Upsert
-    suspend fun upsertProjects(entities: List<ProjectEntity>)
+    suspend fun upsertProjects(entities: List<ProjectEntity>): List<Long>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrIgnoreProject(projectEntity: ProjectEntity): Long
+
+    @Upsert
+    suspend fun upsertProject(entity: ProjectEntity): Long
 
     @Query(
         value = """
