@@ -1,6 +1,9 @@
 package com.huxh.apps.core.utils
 
-fun timeDisintegration(totalSeconds: Long): Triple<Int, Int, Int> {
+import kotlin.time.Duration
+
+fun timeDisintegration(duration: Duration): Triple<Int, Int, Int> {
+    val totalSeconds = duration.inWholeSeconds
     if (totalSeconds <= 0) return Triple(0, 0, 0)
     val hours = totalSeconds / 3600
     val minutes = (totalSeconds % 3600) / 60
@@ -8,8 +11,8 @@ fun timeDisintegration(totalSeconds: Long): Triple<Int, Int, Int> {
     return Triple(hours.toInt(), minutes.toInt(), seconds.toInt())
 }
 
-fun formatTime(time: Long): String {
-    val triple = timeDisintegration(time / 1000L)
+fun formatTime(duration: Duration): String {
+    val triple = timeDisintegration(duration)
     val hour = if (triple.first == 0) {
         ""
     } else {

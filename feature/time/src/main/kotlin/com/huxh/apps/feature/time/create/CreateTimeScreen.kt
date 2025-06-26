@@ -45,6 +45,7 @@ import com.huxh.apps.core.ui.ToolbarComposable
 import com.huxh.apps.core.ui.dragHandle
 import com.huxh.apps.core.ui.rememberDraggableListState
 import com.huxh.apps.core.utils.formatTime
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 internal fun CreateTimeScreen(
@@ -150,7 +151,7 @@ private fun Repeat(viewModel: CreateTimeViewModel) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = "单轮时长：${formatTime(list.sum())}",
+            text = "单轮时长：${formatTime(list.sum().milliseconds)}",
             style = MaterialTheme.typography.titleSmall,
         )
         Spacer(modifier = Modifier.weight(1f))
@@ -259,7 +260,7 @@ private fun LazyListItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = formatTime(item),
+                text = formatTime(item.milliseconds),
                 modifier = Modifier.weight(1f)
             )
             // 添加拖拽手柄图标（可选）

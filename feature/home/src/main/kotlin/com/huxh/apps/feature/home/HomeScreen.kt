@@ -33,6 +33,8 @@ import com.huxh.apps.core.designsystem.component.AppBackground
 import com.huxh.apps.core.designsystem.icon.AppIcons
 import com.huxh.apps.core.designsystem.theme.LocalBackgroundTheme
 import com.huxh.apps.core.utils.formatTime
+import kotlin.time.Duration.Companion.microseconds
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 internal fun HomeScreen(
@@ -109,7 +111,7 @@ private fun TimeList(viewModel: HomeViewModel, navigateToTime: (Long) -> Unit) {
                     }
                     Row {
                         Text(
-                            text = formatTime(data.duration),
+                            text = formatTime(data.duration.milliseconds),
                             style = MaterialTheme.typography.bodyMedium,
                         )
                         Spacer(modifier = Modifier.size(3.dp))

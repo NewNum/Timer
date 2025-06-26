@@ -22,6 +22,8 @@ import com.huxh.apps.core.ui.BaseFullScreenDialog
 import com.huxh.apps.core.ui.GeneralButton
 import com.huxh.apps.core.ui.TimePicker
 import com.huxh.apps.core.utils.timeDisintegration
+import kotlin.time.Duration.Companion.microseconds
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 fun TimeDialog(
@@ -44,7 +46,7 @@ fun TimeDialog(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp),
-                start = timeDisintegration(timeMillis / 1000L),
+                start = timeDisintegration(timeMillis.milliseconds),
                 mask = Color.White,
             ) {
                 timeMillis = it
